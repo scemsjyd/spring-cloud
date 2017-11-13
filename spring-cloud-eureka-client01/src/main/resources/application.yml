@@ -1,0 +1,16 @@
+server:
+  port: 8762
+eureka:
+  client:
+    service-url:
+      default-zone: http://${eureka.instance.hostname}:${server}/eureka/
+  healthcheck:
+    enabled: false
+  #关闭断路保护
+  instance:
+    leaseRenewalIntervalInSeconds: 1
+    leaseExpirationDurationInSeconds: 2
+spring:
+  application:
+    name: service-hi
+
