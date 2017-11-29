@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: service-zuul
+server:
+  port: 8766
+eureka:
+  client:
+#    fetch-registry: false 打开这个会引起zuul报load banlance 错，无法注册服务到eureka
+    service-url:
+      default-zone: http://127.0.0.1:8761/eureka/
+#      zuul 路由转发配置
+zuul:
+  routes:
+    api-a:
+      path: /api-a/**
+      serviceId: SERVICE-RIBBON
+    api-b:
+      path: /api-b/**
+      serviceId: SERVICE-FEIGN
